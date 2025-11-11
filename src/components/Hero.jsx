@@ -6,7 +6,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=2574&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2574&auto=format&fit=crop"
           alt="Photography background"
           className="w-full h-full object-cover"
         />

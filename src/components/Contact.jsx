@@ -12,6 +12,8 @@ const Contact = () => {
     service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,18 +22,45 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! I\'ll get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xanyyjpe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `New inquiry from ${formData.name} - ${formData.service}`
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -213,10 +242,27 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full bg-gold hover:bg-copper text-charcoal font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+              disabled={isSubmitting}
+              className="w-full bg-gold hover:bg-copper text-charcoal font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+
+            {submitStatus === 'success' && (
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-green-800 text-center">
+                  ✓ Thank you for your inquiry! I'll get back to you soon.
+                </p>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-800 text-center">
+                  ✗ Oops! Something went wrong. Please try again or email me directly at angieshvaya.photo@gmail.com
+                </p>
+              </div>
+            )}
           </motion.form>
         </div>
       </div>
