@@ -70,8 +70,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-charcoal mb-1">Email</p>
-                  <a href="mailto:hello@capturedbyangie.com" className="text-charcoal/70 hover:text-copper transition-colors">
-                    hello@capturedbyangie.com
+                  <a href="mailto:angieshvaya.photo@gmail.com" className="text-charcoal/70 hover:text-copper transition-colors">
+                    angieshvaya.photo@gmail.com
                   </a>
                 </div>
               </div>
@@ -84,8 +84,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-charcoal mb-1">Phone</p>
-                  <a href="tel:+15551234567" className="text-charcoal/70 hover:text-copper transition-colors">
-                    (555) 123-4567
+                  <a href="tel:+19167356145" className="text-charcoal/70 hover:text-copper transition-colors">
+                    (916) 735-6145
                   </a>
                 </div>
               </div>
@@ -100,7 +100,7 @@ const Contact = () => {
                 <div>
                   <p className="font-semibold text-charcoal mb-1">Location</p>
                   <p className="text-charcoal/70">
-                    Serving the Greater Metro Area
+                    Greater Sacramento Area
                   </p>
                 </div>
               </div>
@@ -182,7 +182,7 @@ const Contact = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:border-copper transition-colors"
-                placeholder="(555) 123-4567"
+                placeholder="(916) 735-6145"
               />
             </div>
 

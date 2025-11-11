@@ -160,7 +160,7 @@ Build the project and upload the `dist` folder to any static hosting service.
 ## 📧 Contact
 
 For questions or support, reach out to:
-- Email: hello@capturedbyangie.com
+- Email: angieshvaya.photo@gmail.com
 - Instagram: [@capturedbyangie](https://instagram.com)
 
 ## 📄 License
